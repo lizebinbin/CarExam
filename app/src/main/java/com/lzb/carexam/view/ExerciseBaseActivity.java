@@ -3,16 +3,22 @@ package com.lzb.carexam.view;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lzb.carexam.R;
 import com.lzb.carexam.bean.Question;
+import com.lzb.carexam.cache.QuestionDBAccess;
+import com.lzb.carexam.util.DeviceUtil;
 import com.lzb.carexam.util.StringUtil;
+import com.lzb.carexam.util.ToastUtil;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -22,6 +28,9 @@ import java.util.List;
  * Created by MooreLi on 2016/8/11.
  */
 public class ExerciseBaseActivity extends BaseActivity implements View.OnClickListener {
+    ImageView mIvBack;
+    TextView mTvTitle;
+    RelativeLayout mLlContent;
     TextView mTvQuestion, mTvLast, mTvNext, mTvGotoClick;
     EditText mEtGotoNum;
     ImageView mIvImage;
@@ -29,6 +38,7 @@ public class ExerciseBaseActivity extends BaseActivity implements View.OnClickLi
     RadioButton mRbAnswerA, mRbAnswerB, mRbAnswerC, mRbAnswerD;
 
     List<Question> mQuestions;
+    QuestionDBAccess mQuestionAccess;
 
     int mCurrentPosition;
 
@@ -37,9 +47,13 @@ public class ExerciseBaseActivity extends BaseActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initViews();
+        mQuestionAccess = new QuestionDBAccess(this);
     }
 
     private void initViews() {
+        mIvBack = (ImageView) findViewById(R.id.topBar_iv_back);
+        mTvTitle = (TextView) findViewById(R.id.topBar_tv_title);
+        mLlContent = (RelativeLayout) findViewById(R.id.exercise_ll_content);
         mTvQuestion = (TextView) findViewById(R.id.exercise_tv_question);
         mTvLast = (TextView) findViewById(R.id.exercise_tv_last);
         mTvNext = (TextView) findViewById(R.id.exercise_tv_next);
@@ -52,9 +66,20 @@ public class ExerciseBaseActivity extends BaseActivity implements View.OnClickLi
         mRbAnswerC = (RadioButton) findViewById(R.id.exercise_rb_answerC);
         mRbAnswerD = (RadioButton) findViewById(R.id.exercise_rb_answerD);
 
+        /**
+         * 设置事件监听
+         */
+        mIvBack.setOnClickListener(this);
         mTvLast.setOnClickListener(this);
         mTvNext.setOnClickListener(this);
         mTvGotoClick.setOnClickListener(this);
+
+//        mEtGotoNum.setFocusable(false);
+
+        int screenHeight = DeviceUtil.getScreenHeight(this);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        params.setMargins(30, 20, 30, 30);
+        mLlContent.setLayoutParams(params);
     }
 
     /**
@@ -84,7 +109,7 @@ public class ExerciseBaseActivity extends BaseActivity implements View.OnClickLi
                 }
                 if (StringUtil.isNotEmpty(question.getImgPath())) {
                     mIvImage.setVisibility(View.VISIBLE);
-                    Log.e("AAA","path:"+question.getImgPath());
+                    Log.e("AAA", "path:" + question.getImgPath());
                     Picasso.with(this).load(question.getImgPath()).error(R.drawable.exercise_default).into(mIvImage, new Callback() {
                         @Override
                         public void onSuccess() {
@@ -107,12 +132,12 @@ public class ExerciseBaseActivity extends BaseActivity implements View.OnClickLi
         String inputNum = mEtGotoNum.getText().toString();
         //输入为空
         if (StringUtil.isEmpty(inputNum)) {
-            //Toast
+            ToastUtil.showShort(this, "输入不能为空！");
             return;
         }
         //输入不是数字
         if (!StringUtil.isNumber(inputNum)) {
-            //Toast
+            ToastUtil.showShort(this, "请输入数字！");
             return;
         }
         int getPosition = mCurrentPosition;
@@ -121,24 +146,27 @@ public class ExerciseBaseActivity extends BaseActivity implements View.OnClickLi
         } catch (NumberFormatException e) {
             //转换失败
             getPosition = mCurrentPosition;
-            //Toast
+            ToastUtil.showShort(this, "输入错误");
             return;
         }
         //判断是否超过范围
         if (getPosition < 1 || getPosition > mQuestions.size()) {
-
+            ToastUtil.showShort(this, "输入题号超过范围！");
             return;
         }
-        mCurrentPosition = getPosition-1;
+        mCurrentPosition = getPosition - 1;
         showQuestion(mCurrentPosition);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.topBar_iv_back:
+                finish();
+                break;
             case R.id.exercise_tv_last:
                 if (mCurrentPosition == 0) {
-                    Log.e("base", "first one");
+                    ToastUtil.showShort(this, "当前为第一题！");
                     return;
                 } else {
                     mCurrentPosition--;
@@ -146,7 +174,7 @@ public class ExerciseBaseActivity extends BaseActivity implements View.OnClickLi
                 break;
             case R.id.exercise_tv_next:
                 if (mCurrentPosition == mQuestions.size() - 1) {
-                    Log.e("base", "last one");
+                    ToastUtil.showShort(this, "当前为最后一题！");
                     return;
                 } else {
                     mCurrentPosition++;

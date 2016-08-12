@@ -79,6 +79,40 @@ public class QuestionDBAccess {
     }
 
     /**
+     * 查询所有
+     *
+     * @return
+     */
+    public List<Question> queryAllQuestions() {
+        openDB();
+        List<Question> questions = new ArrayList<>();
+        Cursor cursor = mDatabase.rawQuery("select * from testOne_tb ", null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                Question question = new Question();
+                question.setId(cursor.getInt(cursor.getColumnIndex("_id")));
+                question.setClassNum(cursor.getInt(cursor.getColumnIndex("class")));
+                question.setTitle(cursor.getString(cursor.getColumnIndex("question")));
+                question.setAnswerA(cursor.getString(cursor.getColumnIndex("answerA")));
+                question.setAnswerB(cursor.getString(cursor.getColumnIndex("answerB")));
+                question.setAnswerC(cursor.getString(cursor.getColumnIndex("answerC")));
+                question.setAnswerD(cursor.getString(cursor.getColumnIndex("answerD")));
+                question.setRightAnswer(cursor.getString(cursor.getColumnIndex("rightAnswer")));
+                question.setImgPath(cursor.getString(cursor.getColumnIndex("imgPath")));
+                question.setImgContent(cursor.getBlob(cursor.getColumnIndex("imgContent")));
+                question.setType(cursor.getInt(cursor.getColumnIndex("qusType")));
+
+                questions.add(question);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        closeDB();
+        return questions;
+    }
+
+    /**
      * 根据章节查询
      *
      * @param num

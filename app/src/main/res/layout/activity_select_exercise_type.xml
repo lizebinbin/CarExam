@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainColor">
+
+    <include
+        android:id="@+id/SelectExerciseTopBar"
+        layout="@layout/layout_top_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/SelectExerciseTopBar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_10"
+            android:background="@drawable/corner_rect_yellow_bg"
+            android:paddingBottom="50dp">
+
+
+            <LinearLayout
+                android:id="@+id/SelectExerciseType_ll_types"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/circle_bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/SelectExerciseType_ll_class"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/margin_15">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/type_by_class" />
+
+                        <TextView
+                            style="@style/select_page_item"
+                            android:text="@string/exerciseType_class" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/SelectExerciseType_ll_oneByOne"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingRight="@dimen/margin_15">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/type_one_by_one" />
+
+                        <TextView
+                            style="@style/select_page_item"
+                            android:text="@string/exerciseType_oneByOne" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/SelectExerciseType_ll_atRandom"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/margin_15">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/type_random" />
+
+                        <TextView
+                            style="@style/select_page_item"
+                            android:text="@string/exerciseType_atRandom" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/SelectExerciseType_ll_takeExam"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingRight="@dimen/margin_15">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/type_test" />
+
+                        <TextView
+                            style="@style/select_page_item"
+                            android:text="@string/exerciseType_takeExam" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--<ImageView-->
+            <!--android:id="@+id/SelectExerciseType_iv_img"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignBottom="@id/SelectExerciseType_ll_types"-->
+            <!--android:src="@drawable/index_img_shadow" />-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/SelectExerciseType_iv_img1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/SelectExerciseType_iv_img"-->
+            <!--android:layout_marginTop="-2dp"-->
+            <!--android:src="@drawable/index_img_shadow1" />-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/SelectExerciseType_ll_types"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_15"
+                android:background="@drawable/corner_rect_bg"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_15"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="@dimen/margin_15">
+
+                <LinearLayout
+                    android:id="@+id/SelectExerciseType_ll_MyWrong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/type_wrong_questions" />
+
+                    <TextView
+                        style="@style/select_page_item"
+                        android:text="@string/myWrongQuestions" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SelectExerciseType_ll_MyCollect"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/type_collect" />
+
+                    <TextView
+                        style="@style/select_page_item"
+                        android:text="@string/myCollect" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/SelectExerciseType_ll_MyRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/type_my_record" />
+
+                    <TextView
+                        style="@style/select_page_item"
+                        android:text="@string/myRecords" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/type_ranking" />
+
+                    <TextView
+                        style="@style/select_page_item"
+                        android:text="待定" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

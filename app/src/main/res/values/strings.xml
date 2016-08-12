@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CarExam</string>
+    <string name="exerciseType_class">章节练习</string>
+    <string name="exerciseType_oneByOne">顺序练习</string>
+    <string name="exerciseType_atRandom">随机练习</string>
+    <string name="exerciseType_takeExam">模拟考试</string>
+
+    <string name="myWrongQuestions">错题集</string>
+    <string name="myCollect">收藏夹</string>
+    <string name="myRecords">考试统计</string>
 </resources>

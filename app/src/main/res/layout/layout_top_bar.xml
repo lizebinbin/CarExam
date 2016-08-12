@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/topBar_height"
+    android:background="@color/mainColor">
+
+    <ImageView
+        android:id="@+id/topBar_iv_back"
+        android:layout_width="@dimen/topBar_height"
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"
+        android:src="@drawable/common_back_white" />
+
+    <TextView
+        android:id="@+id/topBar_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="科目一（小车）"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize_big" />
+</RelativeLayout>

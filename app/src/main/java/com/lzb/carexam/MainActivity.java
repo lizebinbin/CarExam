@@ -8,9 +8,8 @@ import android.view.View;
 
 import com.lzb.carexam.bean.Question;
 import com.lzb.carexam.cache.QuestionDBAccess;
-import com.lzb.carexam.view.ExerciseActivity;
+import com.lzb.carexam.view.SelectExerciseTypeActivity;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mQuestions = mQuestionDbAccess.queryByClassNum(1);
-                Intent intent = new Intent(MainActivity.this, ExerciseActivity.class);
-                intent.putExtra("testQuestions", (Serializable) mQuestions);
+//                Intent intent = new Intent(MainActivity.this, ExerciseActivity.class);
+//                intent.putExtra("testQuestions", (Serializable) mQuestions);
+                Intent intent = new Intent(MainActivity.this, SelectExerciseTypeActivity.class);
                 startActivity(intent);
             }
         });
