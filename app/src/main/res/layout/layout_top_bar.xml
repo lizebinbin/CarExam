@@ -20,4 +20,22 @@
         android:text="科目一（小车）"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize_big" />
+
+    <ImageView
+        android:id="@+id/topBar_iv_collect"
+        android:layout_width="@dimen/topBar_height"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/exercise_collect"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/topBar_iv_delete"
+        android:layout_width="@dimen/topBar_height"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/topBar_iv_collect"
+        android:scaleType="centerInside"
+        android:src="@drawable/exercise_delete"
+        android:visibility="gone" />
 </RelativeLayout>

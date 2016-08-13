@@ -147,6 +147,14 @@ public class QuestionDBAccess {
         return questions;
     }
 
+    public int getTotalCount() {
+        openDB();
+        Cursor cursor = mDatabase.rawQuery("select * from testOne_tb ", null);
+        int count = cursor.getCount();
+        closeDB();
+        return count;
+    }
+
     private void openDB() {
         mDatabase = openDatabase(context);
     }

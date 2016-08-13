@@ -14,4 +14,10 @@
     <color name="transparent">#00000000</color>
 
     <color name="black_textColor">#1a2940</color>
+
+    <!--章节选择颜色-->
+    <color name="select_class_blue">#4CB0FF</color>
+    <color name="select_class_red">#FF6B62</color>
+    <color name="select_class_green">#85C527</color>
+    <color name="select_class_yellow">#FFB026</color>
 </resources>

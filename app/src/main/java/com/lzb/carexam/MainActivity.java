@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.lzb.carexam.base.Config;
 import com.lzb.carexam.bean.Question;
 import com.lzb.carexam.cache.QuestionDBAccess;
 import com.lzb.carexam.view.SelectExerciseTypeActivity;
@@ -24,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mQuestionDbAccess = new QuestionDBAccess(this);
-
-        Question question = mQuestionDbAccess.queryById(20);
-        if (question != null) {
-            Log.e(TAG, question.getTitle());
-        } else {
-            Log.e(TAG, "query null");
-        }
+        Config.totalQuestionCount = mQuestionDbAccess.getTotalCount();
+//        Question question = mQuestionDbAccess.queryById(20);
+//        if (question != null) {
+////            Log.e(TAG, question.getTitle());
+//        } else {
+//            Log.e(TAG, "query null");
+//        }
 
         findViewById(R.id.test).setOnClickListener(new View.OnClickListener() {
             @Override

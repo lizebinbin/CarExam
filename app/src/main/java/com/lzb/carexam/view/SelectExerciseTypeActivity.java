@@ -55,7 +55,7 @@ public class SelectExerciseTypeActivity extends BaseActivity implements View.OnC
         Intent intent = null;
         switch (v.getId()) {
             case R.id.SelectExerciseType_ll_class:
-
+                intent = new Intent(this,SelectClassActivity.class);
                 break;
             case R.id.SelectExerciseType_ll_oneByOne:
                 intent = new Intent(this, ExerciseActivity.class);

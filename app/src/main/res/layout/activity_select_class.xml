@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainColor"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_top_bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/exercise_ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginRight="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_8"
+            android:background="@drawable/corner_rect_yellow_bg"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/margin_15"
+            android:paddingLeft="@dimen/margin_12"
+            android:paddingRight="@dimen/margin_12"
+            android:paddingTop="@dimen/margin_12">
+
+            <TextView
+                android:id="@+id/SelectClass_tv_One"
+                style="@style/select_class_tv_style"
+                android:background="@drawable/class_green_card_bg"
+                android:text="@string/className_one" />
+
+            <TextView
+                android:id="@+id/SelectClass_tv_Two"
+                style="@style/select_class_tv_style"
+                android:layout_marginTop="-5dp"
+                android:background="@drawable/class_red_card_bg"
+                android:text="@string/className_two"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/SelectClass_tv_Three"
+                style="@style/select_class_tv_style"
+                android:layout_marginTop="-5dp"
+                android:background="@drawable/class_blue_card_bg"
+                android:text="@string/className_three"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/SelectClass_tv_Four"
+                style="@style/select_class_tv_style"
+                android:layout_marginTop="-5dp"
+                android:background="@drawable/class_yellow_card_bg"
+                android:text="@string/className_four"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

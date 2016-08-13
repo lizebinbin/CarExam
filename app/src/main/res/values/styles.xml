@@ -26,4 +26,16 @@
         <item name="android:layout_marginTop">@dimen/margin_8</item>
         <item name="android:textColor">@color/black_textColor</item>
     </style>
+
+    <style name="select_class_tv_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/textSize_big</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingLeft">@dimen/margin_15</item>
+        <item name="android:paddingRight">@dimen/margin_15</item>
+        <item name="android:paddingTop">@dimen/margin_8</item>
+        <item name="android:paddingBottom">@dimen/margin_8</item>
+    </style>
 </resources>

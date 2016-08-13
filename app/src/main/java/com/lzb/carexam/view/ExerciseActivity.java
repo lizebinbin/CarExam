@@ -6,8 +6,14 @@ import android.util.Log;
 
 import com.lzb.carexam.R;
 import com.lzb.carexam.base.Config;
+import com.lzb.carexam.bean.Question;
+import com.lzb.carexam.util.SPUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
+ * 答题界面
  * Created by MooreLi on 2016/8/11.
  */
 public class ExerciseActivity extends ExerciseBaseActivity {
@@ -26,6 +32,8 @@ public class ExerciseActivity extends ExerciseBaseActivity {
             switch (sourceType) {
                 case Config.EXERCISE_TYPE_CLASS:
                     mTvTitle.setText(getResources().getText(R.string.exerciseType_class));
+                    int classNum = intent.getIntExtra("classNum", -1);
+                    mQuestions = mQuestionAccess.queryByClassNum(classNum);
                     break;
                 case Config.EXERCISE_TYPE_ONEBYONE:
                     mTvTitle.setText(getResources().getText(R.string.exerciseType_oneByOne));
@@ -33,8 +41,14 @@ public class ExerciseActivity extends ExerciseBaseActivity {
                     break;
                 case Config.EXERCISE_TYPE_ATRANDOM:
                     mTvTitle.setText(getResources().getText(R.string.exerciseType_atRandom));
-
                     break;
+                case Config.EXERCISE_TYPE_MYWRONG:
+                    mTvTitle.setText(getResources().getText(R.string.myWrongQuestions));
+                    break;
+                case Config.EXERCISE_TYPE_MYCOLLECT:
+                    mTvTitle.setText(getResources().getText(R.string.myCollect));
+                    break;
+
             }
 
             if (mQuestions != null) {
@@ -49,5 +63,12 @@ public class ExerciseActivity extends ExerciseBaseActivity {
 
     }
 
+//    private List<Question> getMyWrongRuestions() {
+//        List<Question> wrongQuestions = new ArrayList<>();
+//        for (int i = 0; i < Config.totalQuestionCount; i++) {
+//            if (SPUtil.contains(this, "Question" + (i + 1));
+//        }
+//        return wrongQuestions;
+//    }
 
 }

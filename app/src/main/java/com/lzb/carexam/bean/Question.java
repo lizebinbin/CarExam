@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by MooreLi on 2016/8/10.
  */
-public class Question implements Serializable{
+public class Question implements Serializable {
     private int id;
     private int classNum;
     private String title;
@@ -18,6 +18,9 @@ public class Question implements Serializable{
     private byte[] imgContent;
     private int type;
     private String questionUrl;
+
+    private int userAnswerNum = -1; //用户答案
+    private int rightAnswerNum; //正确答案
 
     public int getId() {
         return id;
@@ -113,5 +116,21 @@ public class Question implements Serializable{
 
     public void setImgContent(byte[] imgContent) {
         this.imgContent = imgContent;
+    }
+
+    public int getUserAnswerNum() {
+        return userAnswerNum;
+    }
+
+    public void setUserAnswerNum(int userAnswerNum) {
+        this.userAnswerNum = userAnswerNum;
+    }
+
+    public int getRightAnswerNum() {
+        return rightAnswerNum;
+    }
+
+    public void setRightAnswerNum(int rightAnswerNum) {
+        this.rightAnswerNum = rightAnswerNum;
     }
 }

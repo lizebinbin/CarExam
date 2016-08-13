@@ -8,4 +8,10 @@
     <string name="myWrongQuestions">错题集</string>
     <string name="myCollect">收藏夹</string>
     <string name="myRecords">考试统计</string>
+
+    <string name="select_classNum">选择章节</string>
+    <string name="className_one">第一章\n2016年C1小车类新题库道路交通安全法律、法规和规章</string>
+    <string name="className_two">第二章\n2016年C1小车类新题库道路交通信号</string>
+    <string name="className_three">第三章\n2016年C1小车类新题库安全行车、文明驾驶基础知识</string>
+    <string name="className_four">第四章\n2016年C1小车类新题库机动车驾驶操作相关基础知识</string>
 </resources>
